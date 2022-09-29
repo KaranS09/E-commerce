@@ -1,0 +1,12 @@
+body {
+  margin: 100px;
+}
+
+.img-1 {
+  width: 400px;
+}
+
+.main-div {
+  display: flex;
+  justify-content: space-between;
+}

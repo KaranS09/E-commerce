@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block nav_rem %}{% endblock %} {% block content %}
+<body>
+  <section class="text-center">
+    <div class="container">
+      <form method="POST" class="form-register">
+        {{ form.hidden_tag() }}
+        <div class="image">
+          <img
+            src="https://cdn.iconscout.com/icon/free/png-256/farmer-2204210-1838555.png"
+            alt="brand_image"
+            width="120"
+            height="110"
+            class="d-inline-block align-top"
+            style="margin-top: 100px; margin-bottom: 20px; text-align: center"
+          />
+        </div>
+        <h1 class="h3 mb-3 font-weight-normal">Please Create your Account</h1>
+        <br />
+        {{ form.username.label() }} {{ form.username(class="form-control",
+        placeholder="User Name") }} {{ form.email_address.label() }} {{
+        form.email_address(class="form-control", placeholder="Email Address") }}
+        {{ form.phone_number.label() }} {{
+        form.phone_number(class="form-control", placeholder="phone number") }}
+        {{ form.password1.label() }} {{ form.password1(class="form-control",
+        placeholder="Password") }} {{ form.password2.label() }} {{
+        form.password2(class="form-control", placeholder="Confirm Password") }}
+        {{ form.address.label() }} {{ form.address(class="form-control",
+        placeholder="Enter your address") }}
+        <br />
+        <div class="checkbox mb-3">
+          <h6>Aldready have an account?</h6>
+          <a
+            class="btn btn-sm btn-secondary"
+            href="{{ url_for('sign_in_page') }}"
+            >Login</a
+          >
+        </div>
+
+        {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+      </form>
+    </div>
+  </section>
+</body>
+{% endblock %}

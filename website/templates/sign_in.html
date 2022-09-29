@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block nav_rem %}{% endblock %} {% block content %}
+<body>
+  <section class="text-center">
+    <div class="container">
+      <form method="POST" class="form-signin">
+        {{ form.hidden_tag() }}
+        <div class="image">
+          <img
+            src="https://cdn.iconscout.com/icon/free/png-256/farmer-2204210-1838555.png"
+            alt="brand_image"
+            width="120"
+            height="110"
+            class="d-inline-block align-top"
+            style="margin-top: 100px; margin-bottom: 20px; text-align: center"
+          />
+        </div>
+        <h1 class="h3 mb-3 font-weight-normal">Please Login</h1>
+        <br />
+        {{ form.username.label() }} {{ form.username(class="form-control",
+        placeholder="User Name") }} {{ form.password.label() }} {{
+        form.password(class="form-control", placeholder="Password") }}
+        <br />
+        <div class="checkbox mb-3">
+          <h6>Do not have an account?</h6>
+          <a class="btn btn-sm btn-secondary" href="{{ url_for('login_page') }}"
+            >Register</a
+          >
+        </div>
+
+        {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+      </form>
+    </div>
+  </section>
+</body>
+{% endblock %}

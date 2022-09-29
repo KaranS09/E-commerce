@@ -1,0 +1,173 @@
+{% extends 'base.html' %} {% block title %}
+<title>User Profile</title>
+
+<style>
+  body {
+    background-color: rgb(253, 255, 254);
+    background-image: url("{{url_for('static', filename='Images/new253.jpg')}}");
+  }
+</style>
+{% endblock %} {% block navcolor %}
+<nav
+  class="navbar navbar-expand-lg navbar-light"
+  style="
+    margin-bottom: 0.4em;
+    border: solid;
+    border-bottom: 0.2em;
+    border-color: transparent;
+    background-color: gray;
+  "
+>
+  {% endblock %} {% block content %}
+
+  <div>
+    <h1
+      class="text-center"
+      style="margin-bottom: 100px; margin-top: 150px"
+    >
+    Orders
+</h1>
+
+  <section class="h-100" style="background-color: #eee">
+    <div class="container h-100 py-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-10">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="fw-normal mb-0 text-black">Out for Delivery</h3>
+          </div>
+          <br />
+          <h5>
+            (Delivery scheduled within 24 hours. In case of any delay please
+            contact 7934879348)
+          </h5>
+         
+          {% for tem in user.ibought %} {% for item in items if item.id ==
+          tem.itemid %}
+          <div class="card rounded-3 mb-4">
+            <div class="card-body p-4">
+              <div
+                class="row d-flex justify-content-between align-items-center"
+              >
+                <div class="col-md-2 col-lg-2 col-xl-2">
+                  <img
+                    src="{{url_for('static', filename= item.image )}}"
+                    class="img-fluid rounded-3"
+                    
+                    alt="Cotton T-shirt"
+                  />
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-3">
+                  <p class="lead fw-normal mb-2">{{ item.name }}</p>
+                </div>
+
+                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                  <h5 class="mb-0">Quantity: {{ tem.bought }} kg</h5>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                  <h5 class="mb-0">&#8377;{{ item.price*tem.bought }}</h5>
+                </div>
+                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                  <a href="/dfruit/{{ tem.id }}" class="text-danger"
+                    ><i class="fas fa-trash fa-lg"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {% endfor %} {% endfor %} {% for tef in user.iboughtf %} {% for fert
+          in ferts if fert.id == tef.fertid %}
+          <div class="card rounded-3 mb-4">
+            <div class="card-body p-4">
+              <div
+                class="row d-flex justify-content-between align-items-center"
+              >
+                <div class="col-md-2 col-lg-2 col-xl-2">
+                  <img
+                    src="{{url_for('static', filename= fert.image )}}"
+                    class="img-fluid rounded-3"
+                    alt="Image"
+                  />
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-3">
+                  <p class="lead fw-normal mb-2">{{ fert.name }}</p>
+                </div>
+
+                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                  <h5 class="mb-0">Quantity: {{ tef.bought }} nos</h5>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                  <h5 class="mb-0">&#8377;{{ fert.price*tef.bought }}</h5>
+                </div>
+                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                  <a href="/delete/{{ tef.id }}" class="text-danger"
+                    ><i class="fas fa-trash fa-lg"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %} {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div>
+    <h1 class="text-center" style="margin-bottom: 100px; margin-top: 150px">
+      Sales
+    </h1>
+  </div>
+
+  <section class="h-100" style="background-color: #eee">
+    <div class="container h-100 py-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-10">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="fw-normal mb-0 text-black">Pending Pickup</h3>
+          </div>
+          <br />
+          <h5>
+            (Pickup scheduled within 24 hours. In case of any delay please
+            contact 7934879348)
+          </h5>
+          {% for stem in user.isold %} {% for item in items if item.id ==
+          stem.itemid %}
+          <div class="card rounded-3 mb-4">
+            <div class="card-body p-4">
+              <div
+                class="row d-flex justify-content-between align-items-center"
+              >
+                <div class="col-md-2 col-lg-2 col-xl-2">
+                  <img
+                    src="{{url_for('static', filename= item.image )}}"
+                    class="img-fluid rounded-3"
+                    alt="Cotton T-shirt"
+                  />
+                </div>
+                <div class="col-md-3 col-lg-3 col-xl-3">
+                  <p class="lead fw-normal mb-2">{{ item.name }}</p>
+                </div>
+
+                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                  <h5 class="mb-0">Quantity: {{ stem.sold }} kg</h5>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                  <h5 class="mb-0">&#8377;{{ item.price*stem.sold }}</h5>
+                </div>
+                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                  <a href="/cancel/{{ stem.id }}" class="text-danger"
+                    ><i class="fas fa-trash fa-lg"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %} {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}
+</nav>

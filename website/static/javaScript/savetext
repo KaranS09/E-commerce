@@ -1,0 +1,12 @@
+"use strict";
+let resize = document.getElementById("resize-sec1");
+window.onresize = function () {
+  if (window.innerWidth <= 1000) {
+    resize.style =
+      "padding: 20px;margin-left: 20px;margin-right: 20px;margin-top: 50px;padding-left: 50px;padding-right: 50px;";
+  } else {
+    resize.style =
+      "padding: 20px;margin-left: 100px;margin-right: 100px;margin-top: 50px;padding-left: 50px;padding-right: 50px;";
+  }
+};
+console.log(window.innerWidth);

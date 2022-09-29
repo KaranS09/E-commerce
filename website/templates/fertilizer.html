@@ -1,0 +1,577 @@
+{% extends 'base.html' %} {% block head_produce %}
+<head>
+<meta charset="utf-8" />
+{% block title %}
+<title>Fertiliser and Pesticides</title>
+{% endblock %}
+<link rel="stylesheet" href="" />
+
+
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css"
+    integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE"
+    crossorigin="anonymous"
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Tangerine:wght@700&display=swap"
+    rel="stylesheet"
+  />
+  
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/header.css') }}">
+
+  <style>
+    
+
+    .item img {
+      height: 280px;
+
+    }
+
+    .card-img-top {
+      height: 280px;
+    }
+
+    body {
+     background-color: rgb(253, 255, 254);
+    background-image: url("{{url_for('static', filename='Images/new253.jpg')}}")
+    }
+
+    .card-body {
+     height: 220px;
+    }
+  </style>
+  </head>
+{% endblock %} 
+{% block navcolor %}
+          <nav class="navbar navbar-expand-lg navbar-light" style="margin-bottom: .4em; border:solid; border-bottom:.20em; border-color:transparent; background-color: gray; ">
+            {% endblock %}
+{% block content %}
+<!--let's try this-->
+<div class="border-fix">
+  <div class="container-fluid my-3 ">
+    <div class="head-1">Pesticides and Fertilizers</div>
+    <div id="resize-main" class="main-seg ">
+    <div><h3 class="text-secondary">Fertilizers</h3></div>
+  <div class="container my-4">
+    
+  <!--Carousel Wrapper-->
+  <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+  
+  <!--Controls-->
+  <div class="controls-top">
+  <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+  <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+      class="fas fa-chevron-right"></i></a>
+  </div>
+  <!--/.Controls-->
+  
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+  <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+  <li data-target="#multi-item-example" data-slide-to="1"></li>
+  
+  </ol>
+  <!--/.Indicators-->
+  
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+  
+  <!--First slide-->
+  <div class="carousel-item active">
+  {% for fert in ferts if fert.type == 'f' %}
+  
+  <div class="col-md-6 col-lg-3 col-sm-12" style="float:left">
+    <div class="card mb-2">
+       <img class="card-img-top"
+         src="{{url_for('static', filename= fert.image )}}" alt="Card image cap">
+       <div class="card-body">
+         <div class="upper-btn">
+           <div><h4>{{ fert.name }}</h4></div>
+           <form method="POST">
+            <input
+              id="purchased_fert"
+              name="purchased_fert"
+              type="hidden"
+              value="{{ fert.name }}"
+            />
+            <input
+              id="quantity_bought_f"
+              name="quantity_bought_f"
+              type="hidden"
+              value="{{ purchase_form_f.bquantity.data }}"
+            />
+
+            {{ purchase_form_f.hidden_tag() }} {{ purchase_form_f.bquantity.label }}
+            <br>
+            <div style="margin: 10px">
+            {{ purchase_form_f.bquantity(class="form-control form-sm",
+            placeholder="Quantity") }}
+            <div style="height:5px"></div> {{ purchase_form_f.submit(class="btn
+            btn-outline-success btn-block button--small btn-center") }}
+            </div>
+          </form>
+          
+             </div>
+             <h6> &#8377;{{ fert.price }}</h6>
+             <div>
+               <h6>Availability: {{'%0.2f'| format(fert.quantity|float)}} kg</h6>
+           
+             </div>
+             
+          
+        </div>
+     </div>
+   </div>
+  {% endfor %}
+  </div>
+  </div>
+  
+  
+  </div>
+  <!--/.Second slide-->
+  
+  
+  
+  </div>
+  <!--/.Slides-->
+  
+  </div>
+
+  <div id="resize-main" class="main-seg ">
+    <div><h3 class="text-secondary">Pesticides</h3></div>
+  <div class="container my-4">
+    
+  <!--Carousel Wrapper-->
+  <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+  
+  <!--Controls-->
+  <div class="controls-top">
+  <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+  <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+      class="fas fa-chevron-right"></i></a>
+  </div>
+  <!--/.Controls-->
+  
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+  <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+  <li data-target="#multi-item-example" data-slide-to="1"></li>
+  
+  </ol>
+  <!--/.Indicators-->
+  
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+  
+  <!--First slide-->
+  <div class="carousel-item active">
+  {% for fert in ferts if fert.type == 'p' %}
+  
+  <div class="col-md-6 col-lg-3 col-sm-12" style="float:left">
+    <div class="card mb-2">
+      
+        
+       <img class="card-img-top"
+         src="{{url_for('static', filename= fert.image )}}" alt="Card image cap">
+         
+       <div class="card-body">
+         <div class="upper-btn">
+           <div><h4>{{ fert.name }}</h4></div>
+           <form method="POST">
+            <input
+              id="purchased_fert"
+              name="purchased_fert"
+              type="hidden"
+              value="{{ fert.name }}"
+            />
+            <input
+              id="quantity_bought_f"
+              name="quantity_bought_f"
+              type="hidden"
+              value="{{ purchase_form_f.bquantity.data }}"
+            />
+
+            {{ purchase_form_f.hidden_tag() }} {{ purchase_form_f.bquantity.label }}
+            <br>
+            <div style="margin: 10px">
+            {{ purchase_form_f.bquantity(class="form-control form-sm",
+            placeholder="Quantity") }}
+            <div style="height:5px"></div> {{ purchase_form_f.submit(class="btn
+            btn-outline-success btn-block button--small btn-center") }}
+            </div>
+          </form>
+          
+             </div>
+             <h6> &#8377;{{ fert.price }}</h6>
+             <div>
+               <h6>Availability: {{'%0.2f'| format(fert.quantity|float)}} kg</h6>
+           
+             </div>
+             
+          
+        </div>
+     </div>
+   </div>
+  {% endfor %}
+  </div>
+  </div>
+  
+  
+  </div>
+  <!--/.Second slide-->
+  
+  
+  
+  </div>
+  <!--/.Slides-->
+  
+  </div>
+  <!--/.Carousel Wrapper-->
+       <!-- <div class="item mb-4">
+         <div class="card border-0 shadow">
+           <img src="Suruga.jpeg" alt="Cauliflower">
+           <div class="card-body">
+            <div class="upper-btn">
+             <h4>Suruga (Pymetrozine 50% WG)- 120 gram</h4>
+             <div>
+              <button class="buy-button">BUY</button>
+
+                </div>
+                </div>
+             <h6> &#8377;50</h6>
+             <div>
+              <h6>Availability: 120gm</h6>
+              </div>
+           </div>
+
+         </div>
+       </div>
+       <div class="item mb-4">
+         <div class="card border-0 shadow">
+           <img src="Rekishi.jpeg" alt="Spinach">
+           <div class="card-body">
+            <div class="upper-btn">
+             <h4>Rekishi (Sulfosulfuron 75% WG) - 13.50g</h4>
+             <div>
+              <button class="buy-button">BUY</button>
+
+                </div>
+                </div>
+             <h6> &#8377;50</h6>
+             <div>
+              <h6>Availability: 13.50gm</h6>
+              </div>
+           </div>
+
+         </div>
+       </div>
+       <div class="item mb-4">
+         <div class="card border-0 shadow">
+           <img src="Konatsu.jpeg" alt="Potato">
+           <div class="card-body">
+            <div class="upper-btn">
+             <h4>Konatsu (Spinetoram 11.7% SC)- 100 ml</h4>
+             <div>
+              <button class="buy-button">BUY</button>
+
+                </div>
+                </div>
+             <h6> &#8377;50</h6>
+             <div>
+              <h6>Availability:100ml</h6>
+              </div>
+           </div>
+
+         </div>
+       </div>
+       <div class="item mb-4">
+         <div class="card border-0 shadow">
+           <img src="Sayaka.jpeg" alt="Onions">
+           <div class="card-body">
+            <div class="upper-btn">
+             <h4>Sayaka (Picoxystrobin 7.05% + Propiconazole 11.71% SC)- 400ml</h4>
+             <div>
+              <button class="buy-button">BUY</button>
+
+                </div>
+                </div>
+             <h6> &#8377;50</h6>
+             <div>
+              <h6>Availability: 400ml</h6>
+              </div>
+           </div>
+
+         </div>
+       </div>
+       <div class="item mb-4">
+        <div class="card border-0 shadow">
+          <img src="Sokusai Plus.jpeg" alt="Carrots">
+          <div class="card-body">
+            <div class="upper-btn">
+            <h4>Sokusai Plus (Pretilachlor 37% E.W.)- 3 Litre</h4>
+            <div>
+              <button class="buy-button">BUY</button>
+
+                </div>
+                </div>
+            <h6> &#8377;50</h6>
+            <div>
+              <h6>Availability: 3 Litre</h6>
+              </div>
+          </div>
+          </div>
+
+        </div>
+        <div class="item mb-4">
+         <div class="card border-0 shadow">
+           <img src="Atari.jpeg" alt="Brocolli">
+           <div class="card-body">
+            <div class="upper-btn">
+             <h4>Atari (Atrazine 50% WP) - 1 Kg</h4>
+             <div>
+              <button class="buy-button">BUY</button>
+
+                </div>
+                </div>
+             <h6> &#8377;50</h6>
+             <div>
+              <h6>Availability: 1kg</h6>
+              </div>
+           </div>
+           </div>
+
+         </div>
+         <div class="item mb-4">
+          <div class="card border-0 shadow">
+            <img src="Pseudocare.jpeg" alt="Tomatoes">
+            <div class="card-body">
+              <div class="upper-btn">
+              <h4>Pseudocare (Pseudomonas fluorescens 0.5% WP)-1 KG (Pack of 10)</h4>
+              <div>
+                <button class="buy-button">BUY</button>
+
+                  </div>
+                  </div>
+              <h6> &#8377;50</h6>
+              <div>
+                <h6>Availability: 1kg</h6>
+                </div>
+            </div>
+            </div>
+
+          </div>
+        -->
+</div>
+</section>
+
+<!-- <section id="resize-sec3" class="section-3">
+
+
+<div class="container-fluid my-3">
+  <div class="main-seg ">
+  <div><h3 class="text-secondary">Organic Products</h3></div>
+
+  <div class="row mt-5">
+    <div class="owl-carousel owl-theme">
+      <div class="item mb-4">
+        <div class="card border-0 shadow">
+          <img src="Bio Decomposer.jpeg" alt="image">
+          <div class="card-body">
+            <div class="upper-btn">
+            <h4>Bio Decomposer- 50 Gram (Pack of 100)</h4>
+            <div>
+              <button class="buy-button">BUY</button>
+
+                </div>
+                </div>
+            <h6> &#8377;50</h6>
+            <div>
+              <h6>Availability: 50gm</h6>
+              </div>
+          </div>
+
+        </div>
+      </div> -->
+
+      <!-- <div class="item mb-4">
+        <div class="card border-0 shadow">
+          <img src="Acetobacter.jpeg" alt="image">
+          <div class="card-body">
+            <div class="upper-btn">
+            <h4>Acetobacter - 1litre</h4>
+            <div>
+              <button class="buy-button">BUY</button>
+
+                </div>
+                </div>
+            <h6> &#8377;50</h6>
+            <div>
+              <h6>Availability: 1litre</h6>
+              </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="item mb-4">
+        <div class="card border-0 shadow">
+          <img src="Dharti Gold Drip.jpeg" alt="image">
+          <div class="card-body">
+            <div class="upper-btn">
+            <h4>Dharti Gold Drip (Mycorrhizal Biofertilizer)- 100 g</h4>
+            <div>
+              <button class="buy-button">BUY</button>
+
+                </div>
+                </div>
+            <h6> &#8377;50</h6>
+            <div>
+              <h6>Availability: 100g</h6>
+              </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="item mb-4">
+        <div class="card border-0 shadow">
+          <img src="Liquid Consortia.jpeg" alt="image">
+          <div class="card-body">
+            <div class="upper-btn">
+            <h4>Liquid Consortia - 1 Litre</h4>
+            <div>
+              <button class="buy-button">BUY</button>
+
+                </div>
+                </div>
+            <h6> &#8377;50</h6>
+            <div>
+              <h6>Availability: 1 Litre</h6>
+              </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="item mb-4">
+        <div class="card border-0 shadow">
+          <img src="Zinc Solubilising Biofertilisers.jpeg" alt="image">
+          <div class="card-body">
+            <div class="upper-btn">
+            <h4>Zinc Solubilising Biofertilisers- 1 Litre</h4>
+            <div>
+              <button class="buy-button">BUY</button>
+
+                </div>
+                </div>
+            <h6> &#8377;50</h6>
+            <div>
+              <h6>Availability:- 1 Litre</h6>
+              </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="item mb-4">
+        <div class="card border-0 shadow">
+          <img src="Potassium Mobilizing Biofertilizer.jpeg" alt="image">
+          <div class="card-body">
+            <div class="upper-btn">
+            <h4>Potassium Mobilizing Biofertilizer - 1 Litre</h4>
+            <div>
+              <button class="buy-button">BUY</button>
+
+                </div>
+                </div>
+            <h6> &#8377;50</h6>
+            <div>
+              <h6>Availability: 1 Litre</h6>
+              </div>
+          </div>
+
+        </div>
+      </div>-->
+
+</section>
+</div>
+
+
+{% endblock %}
+{% block jlinks %}
+<script>
+ let resize = document.getElementById("resize-sec1");
+let resize1 = document.getElementById("resize-sec2");
+let resize2 = document.getElementById("resize-sec3");
+window.onresize = function () {
+ if (window.innerWidth <= 1000) {
+   resize.style =
+     "padding: 20px;margin-left: 20px;margin-right: 20px;margin-top: 50px;padding-left: 50px;padding-right: 50px;";
+   resize1.style =
+     "padding: 20px;margin-left: 20px;margin-right: 20px;margin-top: 50px;padding-left: 50px;padding-right: 50px;";
+   resize2.style =
+     "padding: 20px;margin-left: 20px;margin-right: 20px;margin-top: 50px;padding-left: 50px;padding-right: 50px;";
+ } else {
+   resize.style =
+     "padding: 20px;margin-left: 100px;margin-right: 100px;margin-top: 50px;padding-left: 50px;padding-right: 50px;";
+   resize1.style =
+     "padding: 20px;margin-left: 100px;margin-right: 100px;margin-top: 50px;padding-left: 50px;padding-right: 50px;";
+   resize2.style =
+     "padding: 20px;margin-left: 100px;margin-right: 100px;margin-top: 50px;padding-left: 50px;padding-right: 50px;";
+ }
+};
+</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+  if ( window.history.replaceState ) {
+      window.history.replaceState( null, null, window.location.href );
+  }
+</script>
+  
+  
+  <div class="oval-shape"></div>
+  <div class="bg-bottom">
+
+<div class="end-bar">
+
+  <div class="end-center-left">
+    <ul>
+      <li>FAQ's</li>
+      <li>About Us</li>
+      <li>Blog</li>
+    </ul>
+  </div>
+  <div class="end-center-right">
+    <h4>Contact Us</h4>
+    <div>Ph No: +9100000000</div>
+    <div>e-mail: farmEasy@gmail.com</div>
+  </div>
+</div>
+<div class="icons">
+ <img class="img-1" src="{{url_for('static', filename='Images/insta.jfif')}}" alt="">
+ <img class="img-2" src="{{url_for('static', filename='Images/linkedin.png')}}" alt="">
+ <img class="img-3" src="{{url_for('static', filename='Images/twitter.png')}}" alt="">
+ <img class="img-4" src="{{url_for('static', filename='Images/facebook.png')}}" alt="">
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+<style>
+  .modal-content {
+    background-color: #c9f3c7;
+  }
+</style>
+
+<!-- More Info -->
+<div
+  class="modal fade"
+  !important
+  id="Modal-SellInfo-{{ item.id }}"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+          <!-- -->
+          {{ item.name }}
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img
+          src="{{url_for('static', filename= item.image)}}"
+          alt="image"
+          style="width: 400px; margin: 30px; border-radius: 20px"
+        /><br /><br />
+        {{ item.description }}
+        <br /><br />
+        <p>Fertilizer: {{ item.fertilizer }}</p>
+        <p>Pesticides: {{ item.pesticide }}</p>
+        <p>In stock: {{'%0.2f'| format(item.quantity|float)}} kg</p>
+        <p>Price: &#8377;{{ item.price }}</p>
+      </div>
+      <div class="modal-footer">
+        <form method="POST">
+          <input
+            id="sold_item"
+            name="sold_item"
+            type="hidden"
+            value="{{ item.name }}"
+          />
+          <input
+            id="quantity_bought"
+            name="quantity_bought"
+            type="hidden"
+            value="{{ sell_form.bquantity.data }}"
+          />
+          {{ sell_form.hidden_tag() }} {{ sell_form.bquantity.label }} {{
+          sell_form.bquantity(class="form-control", placeholder="Quantity") }}
+          {{ sell_form.submit(class="btn btn-outline-info btn-block") }}
+        </form>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

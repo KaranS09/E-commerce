@@ -1,0 +1,246 @@
+/* .header-row {
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(
+    -60deg,
+    transparent,
+    #72a043a1 14%,
+    #72a043bd 28%,
+    #72a043c9 42%,
+    #72a043cf 56%,
+    #72a043b8 70%,
+    #72a043a8 84%,
+    rgb(0 0 0 / 5%)
+  );
+
+  background-color: #72a043;
+  justify-content: space-between;
+  height: 62px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgb(232, 232, 232);
+  box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.left-icons {
+  display: flex;
+  width: 300px;
+  margin-left: 60px;
+  align-items: center;
+}
+
+.middle-icons {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
+}
+
+.right-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  margin-left: 60px;
+}
+
+.logo-top {
+  height: 40px;
+  margin-top: 3px;
+  margin-bottom: 4px;
+  border-radius: 10px;
+} */
+
+button {
+  font-size: 20px;
+  margin: 15px;
+  background-color: transparent;
+  border: none;
+  margin-left: 50px;
+}
+
+.profile-icon {
+  height: 40px;
+  border-radius: 100%;
+  margin-right: 30px;
+}
+
+.main-seg {
+  background-color: aquamarine;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 40px;
+}
+
+.sec-style1 {
+  border-radius: 10px;
+}
+
+.end-bar {
+  display: flex;
+  background-color: rgb(219, 223, 227);
+  margin-left: 0px;
+  height: 120px;
+  color: white;
+  justify-content: center;
+  margin-bottom: none;
+}
+
+.section-1 {
+  padding: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.section-2 {
+  padding-bottom: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.section-3 {
+  padding-bottom: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.oval-shape {
+  background-color: rgb(49, 69, 89);
+  height: 50px;
+  background-color: rgb(219, 223, 227);
+  border-radius: 40% / 100% 100% 0 0;
+  margin-top: 80px;
+}
+
+.head-1 {
+  color: purple;
+  font-style: tangerine;
+  font-family: "Tangerine", cursive;
+  text-align: center;
+  font-weight: 700;
+  font-size: 100px;
+}
+
+.end-center-left {
+  text-align: center;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.end-center-right {
+  display: inline-block;
+  text-align: start;
+}
+
+.icons {
+  display: flex;
+  background-color: rgb(219, 223, 227);
+  padding-bottom: 30px;
+  justify-content: center;
+  margin-top: none;
+}
+
+/* img {
+  height: 70px;
+  padding: 5px;
+  margin: 15px;
+  border-radius: 100%;
+  margin-top: none;
+} */
+
+.img-1 {
+  height: 70px;
+  padding: 5px;
+  margin: 15px;
+  border-radius: 100%;
+  margin-top: none;
+}
+
+.img-2 {
+  height: 70px;
+  padding: 5px;
+  margin: 15px;
+  border-radius: 100%;
+  margin-top: none;
+}
+
+.img-3 {
+  height: 70px;
+  padding: 5px;
+  margin: 15px;
+  border-radius: 100%;
+  margin-top: none;
+}
+
+.img-4 {
+  height: 70px;
+  padding: 5px;
+  margin: 15px;
+  border-radius: 100%;
+  margin-top: none;
+}
+
+.bg-bottom {
+  background-color: rgb(219, 223, 227);
+}
+
+h6 {
+  color: rgb(192, 181, 181);
+  display: inline-block;
+}
+
+.buy-sell-button {
+  display: flex;
+  align-items: center;
+  font-size: 0px;
+  justify-content: space-between;
+}
+
+.buy-button {
+  background-color: red;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  margin-right: 0px;
+  border: none;
+  color: white;
+  margin-left: 3px;
+}
+
+.sell-button {
+  background-color: green;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-left: 0px;
+  border: none;
+  color: white;
+  margin-right: 0px;
+}
+
+.upper-btn {
+  margin-top: 5px;
+  padding: none;
+  display: flex;
+  align-items: center;
+  font-size: 0px;
+  justify-content: space-between;
+}
+
+h5 {
+  font-size: 1.45rem;
+}
+
+.border-fix {
+  margin-left: 150px;
+  margin-right: 150px;
+}
